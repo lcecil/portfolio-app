@@ -123,5 +123,10 @@
       }
     }
   },
-  "defaultProject": "portfolio-app"
+  "defaultProject": "portfolio-app",
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    }
+  }
 }
