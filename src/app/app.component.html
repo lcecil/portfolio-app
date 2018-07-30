@@ -1,14 +1,16 @@
-<mat-toolbar>
-  <div class="first-name">
-    <span>Laura</span>
-  </div>
-  <div class="last-name">
-    <span>Cecil</span>
-  </div>
-</mat-toolbar>
-<router-outlet></router-outlet>
-<div class="panel">
-  <div class="content">
-    panel-content
+<div [ngClass]="selectedClass">
+  <mat-toolbar>
+    <div class="first-name">
+      <span>Laura</span>
+    </div>
+    <div class="last-name">
+      <span>Cecil</span>
+    </div>
+  </mat-toolbar>
+  <router-outlet></router-outlet>
+  <div class="panel">
+    <div class="content">
+      panel-content
+    </div>
   </div>
 </div>

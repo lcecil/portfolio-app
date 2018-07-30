@@ -1,4 +1,4 @@
-$home-theme: #537C8F;
+$home-theme: #5595b1;
 $information-architecture-theme: #f5807f; // TODO find color contrast
 $research-methods-theme: #535a68;
 $visual-designs-theme: #f0bd75; // TODO find color contrast
@@ -9,7 +9,6 @@ $front-end-development-theme: #78cdbf; // TODO find color contrast
 mat-toolbar {
   position: fixed;
   background-color: transparent;
-  color: #fff;
   font-family: 'Work Sans', sans-serif;
   text-transform: uppercase;
   font-size: 42px;
@@ -28,14 +27,12 @@ mat-toolbar {
     flex-basis: 50vw;
     text-align: left;
     margin-left: 5px;
-    color: $home-theme;
   }
 }
 
 .panel {
   width: 50vw;
   height: 100vh;
-  background-color: $home-theme;
   opacity: 0.8;
 
   .content {
@@ -43,6 +40,15 @@ mat-toolbar {
     top: 50%;
     left: 16px;
     transform: translateY(-50%);
-    color: white;
+    color: #fff;
+  }
+}
+
+.home-theme {
+  .panel {
+    background-color: $home-theme;
+  }
+  .last-name {
+    color: $home-theme;
   }
 }
