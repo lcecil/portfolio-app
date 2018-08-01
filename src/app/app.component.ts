@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -14,5 +14,9 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.selectedClass = 'home-theme';
+  }
+
+  @HostListener('window:wheel', ['$event']) onScroll($event) {
+    console.log('scrolling..');
   }
 }
