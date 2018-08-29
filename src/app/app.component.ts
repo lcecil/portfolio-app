@@ -1,6 +1,5 @@
 import { Component, OnInit, HostListener } from '@angular/core';
-import { Observable, Subject, of} from 'rxjs';
-import { throttle, throttleTime } from 'rxjs/operators';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-root',
@@ -10,45 +9,65 @@ import { throttle, throttleTime } from 'rxjs/operators';
 export class AppComponent implements OnInit {
   title = 'portfolio-app';
   selectedClass: string;
-  scrollSubject: Subject<any>;
-  scrollObservable: Observable<any>;
-  lastEvent = null;
-  isIncreasing = false;
+  panels = [
+    {
+      panel: 'ux design'
+    },
+    {
+      panel: 'information architecture'
+    },
+    {
+      panel: 'research methods'
+    },
+    {
+      panel: 'visual designs'
+    },
+    {
+      panel: 'project management'
+    },
+    {
+      panel: 'front-end development'
+    },
+  ];
+  content: any;
+  private debouncer;
 
   constructor() {
-    this.scrollSubject = new Subject<any>();
-    this.scrollObservable = this.scrollSubject.asObservable().pipe(throttleTime(500));
+    this.debouncer = _.debounce((event) => this.debounceScroll(event), 100, {leading: true, trailing: false});
   }
 
   ngOnInit() {
     this.selectedClass = 'home-theme';
-    this.scrollObservable.subscribe(val => console.log(val));
+    this.content = this.panels[0];
+    // this.setUpScrollObservable();
   }
 
-  @HostListener('window:wheel', ['$event']) onScroll($event) {
-    this.scrollSubject.next($event);
+  @HostListener('window:wheel', ['$event']) onScroll(event) {
+    this.debouncer(event);
   }
 
-  // TODO figure this out, mostly copied from github code.
-  private changePanel(event): void {
+  private getDirection(delta): string {
+    return delta > 0 ? 'down' : 'up';
+  }
 
-    if (this.lastEvent === null) {
-      this.getDirection(event.deltaY);
-      this.isIncreasing = true;
-    } else {
-      const isGreaterVelocity = Math.abs(event.deltaY) > Math.abs(this.lastEvent.deltaY);
-
-      if (isGreaterVelocity && !this.isIncreasing) {
-        this.getDirection(event.deltaY);
+  private debounceScroll(event): void {
+    // TODO something fishy is happening, where you have to click in the window to get it to fire again
+    const direction = this.getDirection(event.deltaY);
+    const index = this.panels.indexOf(this.content);
+    if (direction === 'up') {
+      if (index === this.panels.length - 1) {
+        this.content = this.panels[0];
+      } else {
+        this.content = this.panels[index + 1];
       }
-
-      this.isIncreasing = isGreaterVelocity;
     }
 
-    this.lastEvent = event;
-  }
-
-  private getDirection(delta): number {
-    return delta > 0 ? 1 : -1;
+    if (direction === 'down') {
+      if (index === 0) {
+        this.content = this.panels[this.panels.length - 1];
+      } else {
+        this.content = this.panels[index - 1];
+      }
+    }
   }
 }
