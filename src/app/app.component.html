@@ -1,4 +1,4 @@
-<div [ngClass]="selectedClass">
+<div [ngClass]="currentTheme">
   <mat-toolbar>
     <div class="first-name">
       <span>Laura</span>
@@ -8,9 +8,5 @@
     </div>
   </mat-toolbar>
   <router-outlet></router-outlet>
-  <div class="panel">
-    <div class="content">
-      {{ content.panel }}
-    </div>
-  </div>
+  <app-panel [content]="currentPanel.panel"></app-panel>
 </div>

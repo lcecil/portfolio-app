@@ -1,5 +1,6 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import * as _ from 'lodash';
+import { data } from './data';
 
 @Component({
   selector: 'app-root',
@@ -8,38 +9,21 @@ import * as _ from 'lodash';
 })
 export class AppComponent implements OnInit {
   title = 'portfolio-app';
-  selectedClass: string;
-  panels = [
-    {
-      panel: 'ux design'
-    },
-    {
-      panel: 'information architecture'
-    },
-    {
-      panel: 'research methods'
-    },
-    {
-      panel: 'visual designs'
-    },
-    {
-      panel: 'project management'
-    },
-    {
-      panel: 'front-end development'
-    },
-  ];
-  content: any;
+  currentPanel: any;
+  currentIndex: number;
+  currentTheme: string;
+  pages = data;
+  pageKeys: string[];
   private debouncer;
 
   constructor() {
-    this.debouncer = _.debounce((event) => this.debounceScroll(event), 100, {leading: true, trailing: false});
+    this.debouncer = _.debounce((event) => this.debounceScroll(event), 50, {leading: true, trailing: false});
   }
 
   ngOnInit() {
-    this.selectedClass = 'home-theme';
-    this.content = this.panels[0];
-    // this.setUpScrollObservable();
+    this.pageKeys = Object.keys(data);
+    this.currentIndex = 0;
+    this.setCurrentPanel();
   }
 
   @HostListener('window:wheel', ['$event']) onScroll(event) {
@@ -51,23 +35,39 @@ export class AppComponent implements OnInit {
   }
 
   private debounceScroll(event): void {
-    // TODO something fishy is happening, where you have to click in the window to get it to fire again
     const direction = this.getDirection(event.deltaY);
-    const index = this.panels.indexOf(this.content);
+
     if (direction === 'up') {
-      if (index === this.panels.length - 1) {
-        this.content = this.panels[0];
-      } else {
-        this.content = this.panels[index + 1];
-      }
+      this.getPreviousPanel();
     }
 
     if (direction === 'down') {
-      if (index === 0) {
-        this.content = this.panels[this.panels.length - 1];
-      } else {
-        this.content = this.panels[index - 1];
-      }
+      this.getPreviousPanel();
     }
+  }
+
+  private getNextPanel(): void {
+    if (this.currentIndex === (this.pageKeys.length - 1)) {
+      this.currentIndex = 0;
+      this.setCurrentPanel();
+    } else {
+      this.currentIndex = this.currentIndex + 1;
+      this.setCurrentPanel();
+    }
+  }
+
+  private getPreviousPanel(): void {
+    if (this.currentIndex === 0) {
+      this.currentIndex = this.pageKeys.length - 1;
+      this.setCurrentPanel();
+    } else {
+      this.currentIndex = this.currentIndex - 1;
+      this.setCurrentPanel();
+    }
+  }
+
+  private setCurrentPanel(): void {
+    this.currentPanel = data[this.pageKeys[this.currentIndex]];
+    this.currentTheme = this.currentPanel.theme;
   }
 }

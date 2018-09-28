@@ -1,0 +1,69 @@
+@import '../../variables';
+
+.panel {
+  width: 50vw;
+  height: 100vh;
+  opacity: 0.8;
+
+  .content {
+    position: absolute;
+    top: 50%;
+    left: 16px;
+    transform: translateY(-50%);
+    color: #fff;
+  }
+}
+
+.home-theme {
+  .panel {
+    background-color: $home-theme;
+  }
+  .last-name {
+    color: $home-theme;
+  }
+}
+
+.information-architecture-theme {
+  .panel {
+    background-color: $information-architecture-theme;
+  }
+  .last-name {
+    color: $information-architecture-theme;
+  }
+}
+
+.research-methods-theme {
+  .panel {
+    background-color: $research-methods-theme;
+  }
+  .last-name {
+    color: $research-methods-theme;
+  }
+}
+
+.visual-designs-theme {
+  .panel {
+    background-color: $visual-designs-theme;
+  }
+  .last-name {
+    color: $visual-designs-theme;
+  }
+}
+
+.project-management-theme {
+  .panel {
+    background-color: $project-management-theme;
+  }
+  .last-name {
+    color: $project-management-theme;
+  }
+}
+
+.development-theme {
+  .panel {
+    background-color: $development-theme;
+  }
+  .last-name {
+    color: $development-theme;
+  }
+}

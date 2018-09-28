@@ -1,10 +1,4 @@
-$home-theme: #5595b1;
-$information-architecture-theme: #f5807f; // TODO find color contrast
-$research-methods-theme: #535a68;
-$visual-designs-theme: #f0bd75; // TODO find color contrast
-$project-management-theme: #79659b;
-$front-end-development-theme: #78cdbf; // TODO find color contrast
-
+@import './variables';
 
 mat-toolbar {
   position: fixed;
@@ -30,25 +24,26 @@ mat-toolbar {
   }
 }
 
-.panel {
-  width: 50vw;
-  height: 100vh;
-  opacity: 0.8;
-
-  .content {
-    position: absolute;
-    top: 50%;
-    left: 16px;
-    transform: translateY(-50%);
-    color: #fff;
-  }
+.home-theme .last-name {
+  color: $home-theme;
 }
 
-.home-theme {
-  .panel {
-    background-color: $home-theme;
-  }
-  .last-name {
-    color: $home-theme;
-  }
+.information-architecture-theme .last-name {
+  color: $information-architecture-theme;
+}
+
+.research-methods-theme .last-name {
+  color: $research-methods-theme;
+}
+
+.visual-designs-theme .last-name {
+  color: $visual-designs-theme;
+}
+
+.project-management-theme .last-name {
+  color: $project-management-theme;
+}
+
+.development-theme .last-name {
+  color: $development-theme;
 }
