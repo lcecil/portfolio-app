@@ -30,6 +30,16 @@ export class AppComponent implements OnInit {
     this.debouncer(event);
   }
 
+  @HostListener('window:keyup', ['$event']) onKeyUp(event) {
+    if (event.key === 'ArrowUp') {
+      this.getPreviousPanel();
+    }
+
+    if (event.key === 'ArrowDown') {
+      this.getNextPanel();
+    }
+  }
+
   private getDirection(delta): string {
     return delta > 0 ? 'down' : 'up';
   }
