@@ -1,4 +1,5 @@
-<div [ngClass]="currentTheme">
+<div class="half half-loaded" [ngClass]="currentTheme">
+  <!-- Header goes here? -->
   <mat-toolbar>
     <div class="first-name">
       <span>Laura</span>
@@ -7,6 +8,10 @@
       <span>Cecil</span>
     </div>
   </mat-toolbar>
+  <!-- Nav wrap goes here? -->
+  <div class="site-wrap">
+    <div class="dot-nav" role="navigation"></div>
+    <app-panel [content]="currentPanel.panel"></app-panel>
+  </div>
   <router-outlet></router-outlet>
-  <app-panel [content]="currentPanel.panel"></app-panel>
 </div>
