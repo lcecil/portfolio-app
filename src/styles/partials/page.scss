@@ -1,0 +1,43 @@
+.page {
+    width: 100vw;
+    background-color: #fff;
+
+    .page-wrapper {
+      max-width: 60%;
+      margin: 10vh auto;
+
+      .section {
+          padding-bottom: 5vh;
+
+          &:last-child {
+            padding-bottom: 0;
+          }
+      }
+
+      .section-header {
+        text-transform: uppercase;
+        font-weight: 300;
+      }
+
+      .button-wrapper {
+        text-align: center;
+      }
+
+      .artifacts-button {
+        text-transform: uppercase;
+        padding: 1em;
+        border-radius: 5px;
+      }
+
+    }
+
+    .primary-header {
+      font-family: $serif;
+      font-style: italic;
+    }
+
+    .secondary-header {
+      text-transform: uppercase;
+      font-weight: 200;
+    }
+}

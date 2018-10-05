@@ -1,0 +1,42 @@
+$home-theme: #5595b1;
+$information-architecture-theme: #f5807f; // TODO find color contrast
+$research-methods-theme: #535a68;
+$visual-designs-theme: #f0bd75; // TODO find color contrast
+$project-management-theme: #79659b;
+$development-theme: #78cdbf; // TODO find color contrast
+
+$bp-tablet: 35rem;
+$bp-desktop: 50rem;
+
+$serif: 'Playfair Display', serif;
+$sans-serif: 'Poppins', sans-serif;
+
+$font-color-dark: #333;
+$font-color-light: #fff;
+$link-color: #fff;
+
+$theme-1: rgba(36, 123, 160, 0.8);
+$theme-1-hex: #5095B3;
+
+$theme-2: rgba(245, 95, 92, 0.8);
+$theme-2-hex: #F77F7D;
+
+$theme-3: rgba(39, 48, 67, 0.8);
+$theme-3-hex: #525969;
+
+$theme-4: rgba(237, 174, 73, 0.8);
+$theme-4-hex: #F1BE6D;
+
+$theme-5: rgba(89, 60, 132, 0.8);
+$theme-5-hex: #7A639D;
+
+$theme-6: rgba(81, 193, 175, 0.8);
+$theme-6-hex: #74CDBF;
+
+$menu-background: rgba(0, 0, 0, 0.9);
+$footer-background: #666;
+
+$transition-duration: 0.6s;
+$arrow-duration: $transition-duration * 0.3;
+$header-duration: $transition-duration * 0.5;
+$button-duration: $transition-duration * 0.5;

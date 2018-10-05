@@ -1,0 +1,57 @@
+tile-nav {
+  overflow: hidden;
+
+  .next-tile {
+    text-align: right;
+  }
+
+  .previous-tile {
+    text-align: left;
+  }
+
+  .next-tile, .previous-tile {
+    width: 50%;
+    float: left;
+    display: block;
+    height: auto;
+
+    &:hover {
+      cursor: pointer;
+
+      .arrow-left {
+        transform: translateX(-5px);
+      }
+
+      .arrow-right {
+        transform: translateX(5px);
+      }
+    }
+
+    .content-wrapper {
+      color: $font-color-light;
+      max-width: 70%;
+      margin: 1.3em auto 0;
+
+      .primary-header {
+        font-family: $serif;
+        font-style: italic;
+      }
+
+      .secondary-header {
+        text-transform: uppercase;
+        font-weight: 200;
+      }
+
+      .arrow-left, .arrow-right {
+        display: inline-block;
+        width: 22px;
+        transition: transform $arrow-duration ease-in;
+      }
+
+      .page-description {
+        display: inline-block;
+        text-transform: uppercase;
+      }
+    }
+  }
+}
