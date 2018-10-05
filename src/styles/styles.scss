@@ -2,3 +2,20 @@
 @import 'base/icons';
 @import 'base/presets';
 @import 'base/variables';
+
+@import 'partials/background';
+@import 'partials/dot-nav';
+@import 'partials/footer';
+@import 'partials/header';
+@import 'partials/menu';
+@import 'partials/overlay';
+@import 'partials/page';
+@import 'partials/panel';
+@import 'partials/tile-nav';
+
+@import 'themes/development-theme';
+@import 'themes/home-theme';
+@import 'themes/information-architecture-theme';
+@import 'themes/project-management-theme';
+@import 'themes/research-methods-theme';
+@import 'themes/visual-designs-theme';
