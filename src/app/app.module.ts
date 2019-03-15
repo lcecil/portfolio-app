@@ -15,6 +15,7 @@ import { InformationArchitectureIntroComponent } from './intro/information-archi
 import { ResearchMethodsIntroComponent } from './intro/research-methods-intro/research-methods-intro.component';
 import { VisualDesignsIntroComponent } from './intro/visual-designs-intro/visual-designs-intro.component';
 import { ProjectManagementIntroComponent } from './intro/project-management-intro/project-management-intro.component';
+import { DevelopmentIntroComponent } from './intro/development-intro/development-intro.component';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeIntroComponent, data: data.home },
@@ -22,6 +23,7 @@ const appRoutes: Routes = [
   { path: 'research-methods', component: ResearchMethodsIntroComponent, data: data.researchMethods },
   { path: 'visual-designs', component: VisualDesignsIntroComponent, data: data.visualDesigns },
   { path: 'project-management', component: ProjectManagementIntroComponent, data: data.projectManagement },
+  { path: 'development', component: DevelopmentIntroComponent, data: data.development },
   {
     path: '',
     redirectTo: '/', // TODO: send to /home and update theme
@@ -38,6 +40,7 @@ const appRoutes: Routes = [
     ResearchMethodsIntroComponent,
     VisualDesignsIntroComponent,
     ProjectManagementIntroComponent,
+    DevelopmentIntroComponent,
   ],
   imports: [
     BrowserModule,
