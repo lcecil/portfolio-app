@@ -55,7 +55,7 @@ export class AppComponent implements OnInit {
     }
 
     if (direction === 'down') {
-      this.getPreviousPanel();
+      this.getNextPanel();
     }
   }
 

@@ -13,11 +13,13 @@ import { PanelComponent } from './shared/panel/panel.component';
 import { HomeIntroComponent } from './intro/home-intro/home-intro.component';
 import { InformationArchitectureIntroComponent } from './intro/information-architecture-intro/information-architecture-intro.component';
 import { ResearchMethodsIntroComponent } from './intro/research-methods-intro/research-methods-intro.component';
+import { VisualDesignsIntroComponent } from './intro/visual-designs-intro/visual-designs-intro.component';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeIntroComponent, data: data.home },
   { path: 'information-architecture', component: InformationArchitectureIntroComponent, data: data.informationArchitecture },
   { path: 'research-methods', component: ResearchMethodsIntroComponent, data: data.researchMethods },
+  { path: 'visual-designs', component: VisualDesignsIntroComponent, data: data.visualDesigns },
   {
     path: '',
     redirectTo: '/', // TODO: send to /home and update theme
@@ -32,6 +34,7 @@ const appRoutes: Routes = [
     HomeIntroComponent,
     InformationArchitectureIntroComponent,
     ResearchMethodsIntroComponent,
+    VisualDesignsIntroComponent,
   ],
   imports: [
     BrowserModule,
