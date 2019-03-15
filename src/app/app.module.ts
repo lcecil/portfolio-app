@@ -7,11 +7,14 @@ import { AppMaterialModule } from './app-material/app-material.module';
 
 import { AppComponent } from './app.component';
 import { PanelComponent } from './shared/panel/panel.component';
+/** intro components */
 import { HomeIntroComponent } from './intro/home-intro/home-intro.component';
+import { InformationArchitectureIntroComponent } from './intro/information-architecture-intro/information-architecture-intro.component';
 import { data } from './data';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeIntroComponent, data: data.home },
+  { path: 'information-architecture', component: InformationArchitectureIntroComponent, data: data.informationArchitecture },
   {
     path: '',
     redirectTo: '/',
@@ -24,6 +27,7 @@ const appRoutes: Routes = [
     AppComponent,
     PanelComponent,
     HomeIntroComponent,
+    InformationArchitectureIntroComponent,
   ],
   imports: [
     BrowserModule,

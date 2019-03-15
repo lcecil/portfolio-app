@@ -3,11 +3,11 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'app-home-intro',
-  templateUrl: './home-intro.component.html',
-  styleUrls: ['./home-intro.component.scss']
+  selector: 'app-information-architecture-intro',
+  templateUrl: './information-architecture-intro.component.html',
+  styleUrls: ['./information-architecture-intro.component.scss']
 })
-export class HomeIntroComponent implements OnInit {
+export class InformationArchitectureIntroComponent implements OnInit {
   currentPanel: Observable<any>;
 
   constructor(private route: ActivatedRoute) { }
