@@ -1,5 +1,4 @@
 .background-image {
-    display: none;
     position: relative;
     width: 100vw;
     height: 100vh;
@@ -7,10 +6,6 @@
     z-index: -1;
     opacity: 1;
     transition: opacity $transition-duration ease-in-out;
-
-    &.show {
-      display: block;
-    }
 
     svg {
       position: absolute;
