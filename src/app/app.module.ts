@@ -6,9 +6,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppMaterialModule } from './app-material/app-material.module';
 
 import { AppComponent } from './app.component';
-import { PanelComponent } from './components/panel/panel.component';
+import { PanelComponent } from './shared/panel/panel.component';
+import { HomeIntroComponent } from './intro/home-intro/home-intro.component';
+import { data } from './data';
 
 const appRoutes: Routes = [
+  { path: 'home', component: HomeIntroComponent, data: data.home },
   {
     path: '',
     redirectTo: '/',
@@ -20,6 +23,7 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     PanelComponent,
+    HomeIntroComponent,
   ],
   imports: [
     BrowserModule,
