@@ -10,6 +10,64 @@ mat-toolbar {
   text-align: center;
   z-index: 1;
 
+  a:hover {
+  text-decoration: none;
+}
+
+.header-icon-wrapper {
+    position: absolute;
+    left: -60px;
+    top: 0;
+    transition: left $header-duration ease-in-out;
+
+    .toggle-back, .toggle-nav {
+      display: inline-block;
+      padding: 0 10px;
+    }
+}
+
+.header-icon {
+  width: 44px;
+  height: 60px;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &.menu {
+
+    .line {
+      opacity: 1;
+      transition: transform $header-duration ease-in-out, opacity $header-duration ease-in-out;
+    }
+
+    .line-1, .line-3 {
+      transform-origin: 0;
+    }
+
+  }
+
+  &.menu:hover {
+
+    .line-1 {
+      transform: translateY(-1px);
+    }
+
+    .line-3 {
+      transform: translateY(1px);
+    }
+  }
+
+  &.back {
+      transition: transform $arrow-duration ease-in;
+  }
+
+  &.back:hover {
+    transform: translateX(-5px);
+  }
+
+}
+
   .first-name {
     flex-basis: 50vw;
     text-align: right;
@@ -21,6 +79,7 @@ mat-toolbar {
     flex-basis: 50vw;
     text-align: left;
     margin-left: 5px;
+    transition: color $transition-duration ease-in-out;
   }
 }
 
