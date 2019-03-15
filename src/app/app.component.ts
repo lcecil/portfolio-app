@@ -1,4 +1,5 @@
 import { Component, OnInit, HostListener } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router';
 import * as _ from 'lodash';
 import { data } from './data';
 
@@ -16,7 +17,7 @@ export class AppComponent implements OnInit {
   pageKeys: string[];
   private debouncer;
 
-  constructor() {
+  constructor(private router: Router) {
     this.debouncer = _.debounce((event) => this.debounceScroll(event), 50, {leading: true, trailing: false});
   }
 
@@ -24,6 +25,12 @@ export class AppComponent implements OnInit {
     this.pageKeys = Object.keys(data);
     this.currentIndex = 0;
     this.setCurrentPanel();
+    this.router.events.subscribe(event => {
+      console.log(event);
+      if (event instanceof NavigationEnd) {
+        this.currentTheme = event.url.replace('/', '').concat('-theme');
+      }
+    });
   }
 
   @HostListener('window:wheel', ['$event']) onScroll(event) {
@@ -78,6 +85,5 @@ export class AppComponent implements OnInit {
 
   private setCurrentPanel(): void {
     this.currentPanel = data[this.pageKeys[this.currentIndex]];
-    this.currentTheme = this.currentPanel.theme;
   }
 }
