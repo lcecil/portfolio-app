@@ -1,7 +1,6 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import * as _ from 'lodash';
-import { data } from './data';
 
 @Component({
   selector: 'app-root',
@@ -10,10 +9,8 @@ import { data } from './data';
 })
 export class AppComponent implements OnInit {
   title = 'portfolio-app';
-  currentPanel: any;
   currentIndex: number;
   currentTheme: string;
-  pages = data;
   pageKeys: string[];
   private debouncer;
 
@@ -22,15 +19,15 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.pageKeys = Object.keys(data);
     this.currentIndex = 0;
-    this.setCurrentPanel();
     this.router.events.subscribe(event => {
-      console.log(event);
       if (event instanceof NavigationEnd) {
         this.currentTheme = event.url.replace('/', '').concat('-theme');
       }
     });
+    this.pageKeys = this.router.config
+      .map(route => route.path)
+      .filter(string => string !== '');
   }
 
   @HostListener('window:wheel', ['$event']) onScroll(event) {
@@ -53,7 +50,6 @@ export class AppComponent implements OnInit {
 
   private debounceScroll(event): void {
     const direction = this.getDirection(event.deltaY);
-
     if (direction === 'up') {
       this.getPreviousPanel();
     }
@@ -66,24 +62,22 @@ export class AppComponent implements OnInit {
   private getNextPanel(): void {
     if (this.currentIndex === (this.pageKeys.length - 1)) {
       this.currentIndex = 0;
-      this.setCurrentPanel();
+      this.router.navigateByUrl(this.pageKeys[this.currentIndex]);
     } else {
       this.currentIndex = this.currentIndex + 1;
-      this.setCurrentPanel();
+      this.router.navigateByUrl(this.pageKeys[this.currentIndex]);
     }
   }
 
   private getPreviousPanel(): void {
     if (this.currentIndex === 0) {
       this.currentIndex = this.pageKeys.length - 1;
-      this.setCurrentPanel();
+      this.router.navigateByUrl(this.pageKeys[this.currentIndex]);
+
     } else {
       this.currentIndex = this.currentIndex - 1;
-      this.setCurrentPanel();
+      this.router.navigateByUrl(this.pageKeys[this.currentIndex]);
     }
   }
 
-  private setCurrentPanel(): void {
-    this.currentPanel = data[this.pageKeys[this.currentIndex]];
-  }
 }
